@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 
 export default function UrlList({ urls }: { urls: any[] }) {
-  
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   if (!urls || urls.length === 0)
     return <p className="text-stone-500">No URLs yet.</p>;
  
@@ -42,7 +42,7 @@ export default function UrlList({ urls }: { urls: any[] }) {
               rel="noopener noreferrer"
               onClick={() => handleClick(u)}
             >
-              {`https://url-shortener-delta-plum.vercel.app/${u.name}`}
+              {`${baseUrl}/${u.name}`}
             </Link>
 
             {/* Right side: buttons and views */}
