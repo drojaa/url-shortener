@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 
 export default function UrlList({ urls }: { urls: any[] }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  console.log(baseUrl, "!!!!!!!!!!!!!!!")
   if (!urls || urls.length === 0)
     return <p className="text-stone-500">No URLs yet.</p>;
  
