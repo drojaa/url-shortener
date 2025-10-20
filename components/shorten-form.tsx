@@ -8,9 +8,8 @@ export default function ShortenForm({
     onUrlAdded: () => void
 }){
 
-    const [url, setUrl] = useState("");
-    const [name, setName] = useState("");
-
+  
+    const [form, setForm] = useState({ url: "", name: "" });
 
     const handleSubmit = async (e : React.FormEvent) => {
         e.preventDefault();
@@ -20,10 +19,9 @@ export default function ShortenForm({
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ url, name })
+                body: JSON.stringify(form)
             })
-            setUrl(""); // reset 
-            setName("")
+            setForm
             onUrlAdded();
         } catch (error) {
             console.log(error)
@@ -36,15 +34,15 @@ export default function ShortenForm({
             type="url" 
             placeholder="Enter URL to shorten" 
             required
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            value={form.url}
+            onChange={(e) => setForm({ ...form, url: e.target.value })}
             />
              <Input 
             type="text" 
             placeholder="Enter new URL name" 
             required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
             <Button className="w-full p-2 bg-stone-400" type="submit">Shorten URL</Button>
             </div>
