@@ -21,7 +21,7 @@ export default function ShortenForm({
                 },
                 body: JSON.stringify(form)
             })
-            setForm
+            setForm({ url: "", name: "" });
             onUrlAdded();
         } catch (error) {
             console.log(error)
