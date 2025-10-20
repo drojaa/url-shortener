@@ -49,8 +49,7 @@ export default function UrlList({ urls }: { urls: any[] }) {
             {/* Right side: buttons and views */}
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon">
-                <Copy className="h-4 w-4" 
-               />
+               
              
               </Button>
 
