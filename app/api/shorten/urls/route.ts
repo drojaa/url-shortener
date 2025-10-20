@@ -9,7 +9,7 @@ export async function GET() {
   return Response.json({ success: true, data: urls });
 }
 
-export async function POST(req) {
+export async function POST(req: { json: () => PromiseLike<{ form: any; }> | { form: any; }; }) {
   await connectDB();
   const { form } = await req.json();
   if (!form.url) return Response.json({ success: false, message: "Missing URL" }, { status: 400 });
