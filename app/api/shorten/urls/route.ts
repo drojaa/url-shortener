@@ -14,9 +14,16 @@ export async function POST(req: { json: () => PromiseLike<{ url: any; name: any;
   const { url , name} = await req.json();
   if (!url) return Response.json({ success: false, message: "Missing URL" }, { status: 400 });
   if (!name) return Response.json({ success: false, message: "Missing New URL Name" }, { status: 400 });
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
   const newUrl = await Url.create({id: nanoid(6), url: url, name: name});
 
-  return Response.json({ success: true, data: newUrl });
+  return Response.json({
+    success: true,
+    data: {
+      ...newUrl._doc,            
+      shortLink: `${baseUrl}/${newUrl.name}` 
+    },
+  });
 }
 
 export async function PUT(req: { json: () => any; }){

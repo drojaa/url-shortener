@@ -36,19 +36,20 @@ export default function UrlList({ urls }: { urls: any[] }) {
           >
             {/* Left side: original link */}
             <Link
-              href={u.url}
+              href={`/${u.name}`}
               className="text-blue-500 hover:text-blue-600 hover:underline transition-colors"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => handleClick(u)}
             >
-              {u.url}
+              {`https://url-shortener-delta-plum.vercel.app/${u.name}`}
             </Link>
 
             {/* Right side: buttons and views */}
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="icon">
-                <Copy className="h-4 w-4" />
+                <Copy className="h-4 w-4" 
+                href=""/>
              
               </Button>
 
